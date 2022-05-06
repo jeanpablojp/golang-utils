@@ -47,6 +47,12 @@ func (priv PrivateKey) Public() crypto.PublicKey {
 	return PublicKey(publicKey)
 }
 
+func (priv PrivateKey) Seed() crypto.PublicKey {
+	privateKey := make([]byte, PublicKeySize)
+	copy(privateKey, priv[:32])
+	return PrivateKey(privateKey)
+}
+
 // Sign signs the given message with priv.
 // Ed25519 performs two passes over messages to be signed and therefore cannot
 // handle pre-hashed messages. Thus opts.HashFunc() must return zero to
