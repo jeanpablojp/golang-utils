@@ -48,9 +48,9 @@ func (priv PrivateKey) Public() crypto.PublicKey {
 }
 
 func (priv PrivateKey) Seed() crypto.PublicKey {
-	privateKey := make([]byte, PublicKeySize)
-	copy(privateKey, priv[:32])
-	return PrivateKey(privateKey)
+	publicKey := make([]byte, PublicKeySize)
+	copy(publicKey, priv[:32])
+	return PublicKey(publicKey)
 }
 
 // Sign signs the given message with priv.
